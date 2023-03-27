@@ -1,0 +1,31 @@
+.hidden {
+	display: none;
+}
+
+#warn_msg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -235px;
+}
+
+#load_msg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -150px;
+	margin-left: -175px;
+}
+
+#container {
+	margin: auto;
+	background-color: black;
+	border: 2px solid #D2738A;
+}
+
+#loader {
+	position: relative;
+	top: 45%;
+}
+

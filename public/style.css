@@ -1,0 +1,39 @@
+@font-face {
+	font-family: ibm3270;
+	src: url(/font/ibm3270.otf);
+}
+
+body {
+	background-image: url(/img/221.gif);
+	color: white;
+	text-align: center;
+	font-family: ibm3270;
+	font-size: 22px;
+}
+
+a {
+	cursor: pointer;
+	text-decoration: none;
+	color: #D2738A;
+}
+
+#menu {
+	border: 1px solid #D2738A;
+	background-color: black;
+}
+
+table#menu_items {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+td.menu_item {
+	float: left;
+	width: 75px;
+	border-left: 1px solid #D2738A;
+}
+
+td.menu_item:last-child {
+	border-right: 1px solid #D2738A;
+}
+

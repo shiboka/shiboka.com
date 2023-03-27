@@ -1,0 +1,20 @@
+extends layout
+
+block head
+	link(rel='stylesheet' type='text/css' href='/rrr/style.css')
+
+block body
+	h2#title Random Rectangle Renderer
+	#content
+		canvas#cnv
+		br
+		br
+
+		each file in files
+			a.img(href='#'+file) #{file}
+			|  
+			a(href=file)
+				img(src='/img/dl.png' width='16px' height='16px')
+			br
+
+	script(type='text/javascript' src='/rrr/index.js')
