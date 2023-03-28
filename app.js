@@ -49,7 +49,7 @@ const credentials = {
 };
 
 const httpServer = http.createServer(app);
-//const httpsServer = https.createServer(credentials, app);
+const httpsServer = https.createServer(credentials, app);
 
 httpServer.listen(80);
 httpsServer.listen(443);
