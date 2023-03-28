@@ -29,7 +29,7 @@ router.get('/', async (req, res, next) => {
 		}
 
 		fs.rename(path+file, path+'a.swf', err => {
-			exec(`./bin/swfdump -XY ${path}a.swf`, (err, stdout, stderr) => {
+			exec(`swfdump -XY ${path}a.swf`, (err, stdout, stderr) => {
 				const match = stdout.match(/-X ([0-9]+) -Y ([0-9]+)/);
 				fs.rename(path+'a.swf', path+file, err => {
 						res.end(`${file}\n${match[1]}\n${match[2]}`);
