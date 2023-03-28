@@ -10,6 +10,10 @@
 	display: block;
 }*/
 
+.hidden {
+	display: none;
+}
+
 #cnv {
 	border: 2px solid #D2738A;
 }
