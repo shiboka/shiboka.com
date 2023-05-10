@@ -4,6 +4,14 @@ block head
 	link(rel='stylesheet' type='text/css' href='/rrr/style.css')
 
 block body
+	ul
+		li
+			a(href='/') Home
+		li
+			a(href='/flash/') Flash
+		li
+			a.active(href='/rrr') RRR
+
 	h2#title Random Rectangle Renderer
 	#content
 		canvas#img_ref.hidden

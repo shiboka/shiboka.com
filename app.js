@@ -41,15 +41,15 @@ app.use((err, req, res, next) => {
 });
 
 /* ==================================================== */
-
+/*
 const credentials = {
 	key: fs.readFileSync('/etc/letsencrypt/live/shiboka.com/privkey.pem', 'utf-8'),
 	cert: fs.readFileSync('/etc/letsencrypt/live/shiboka.com/cert.pem', 'utf-8'),
 	ca: fs.readFileSync('/etc/letsencrypt/live/shiboka.com/chain.pem', 'utf-8')
 };
-
+*/
 const httpServer = http.createServer(app);
-const httpsServer = https.createServer(credentials, app);
+//const httpsServer = https.createServer(credentials, app);
 
-httpServer.listen(80);
-httpsServer.listen(443);
+httpServer.listen(1337);
+//httpsServer.listen(443);
