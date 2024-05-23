@@ -1,0 +1,21 @@
+<% content_for :head do %>
+  <link rel="stylesheet" type="text/css" href="/rrr/style.css"/>
+<% end %>
+
+<h2 id="title">Random Rectangle Renderer</h2>
+<div id="content">
+  <canvas id="img-ref" class="hidden"></canvas>
+  <canvas id="cnv"></canvas>
+  <br/>
+  <br/>
+</div>
+
+<% files.each do |file| %>
+  <a class="img" href="#<%= file %>"><%= file %></a>
+  <a href="/rrr/<%= file %>">
+    <img src="/img/dl.png" width="16px" height="16px"/>
+  </a>
+  <br/>
+<% end %>
+
+<script type="text/javascript" src="/rrr/index.js"></script>

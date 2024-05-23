@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/style.css"/>
+    <title>shiboka</title>
+    <%= yield_content :head %>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a class="<%= home_button if defined?(home_button) %>" href="/">Home</a>
+      </li>
+      <li>
+        <a class="<%= flash_button if defined?(flash_button) %>" href='/flash'>Flash</a>
+      </li>
+      <li>
+        <a class="<%= rrr_button if defined?(rrr_button) %>" href='/rrr'>RRR</a>
+      </li>
+    </ul>
+    <%= yield %>
+  </body>
+</html>

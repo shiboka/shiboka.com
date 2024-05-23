@@ -1,31 +1,28 @@
-.hidden {
-	display: none;
+#warn-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15%;
 }
 
-#warn_msg {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -150px;
-	margin-left: -235px;
+#load-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15%;
 }
 
-#load_msg {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin-top: -150px;
-	margin-left: -175px;
+#content {
+  margin-bottom: 8%;
 }
 
 #container {
-	margin: auto;
-	background-color: black;
-	border: 2px solid #D2738A;
+  margin: auto;
+  background-color: black;
+  border: 2px solid #D2738A;
 }
 
 #loader {
-	position: relative;
-	top: 45%;
+  position: relative;
+  top: 45%;
 }
-

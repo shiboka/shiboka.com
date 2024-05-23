@@ -1,11 +1,51 @@
-#home_img {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 500px;
-	height: 500px;
-	margin-top: -250px;
-	margin-left: -250px;
-	cursor: pointer;
+#home-img {
+  cursor: pointer;
 }
 
+#seekbar {
+  background-color: black;
+  height: 5px;
+  margin-top: 10px;
+  border: 1px solid #D2738A
+}
+
+#seekbar::-moz-progress-bar {
+  background-color: #D2738A;
+}
+
+#seekbar::-webkit-progress-bar {
+  background-color: #666;
+}
+
+#seekbar::-webkit-progress-value {
+  background-color: #D2738A;
+
+}
+
+#content {
+  margin: 8% 25% 8% 25%;
+  border: 2px solid #D2738A;
+  color: white;
+  background-color: #111;
+}
+
+#inner-content {
+  border: 1px solid #666;
+  margin: 20px;
+  padding: 30px;
+}
+
+p {
+  font-size: 20px;
+}
+
+.header {
+  color: #D2738A;
+}
+
+.sub-header {
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration-line: underline;
+  color: #666;
+}

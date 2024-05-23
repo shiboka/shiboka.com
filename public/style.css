@@ -1,52 +1,56 @@
 @font-face {
-	font-family: ibm3270;
-	src: url(/font/ibm3270.otf);
+  font-family: ibm3270;
+  src: url(/font/ibm3270.otf);
 }
 
 body {
-	background-image: url(/img/221.gif);
-	color: white;
-	text-align: center;
-	font-family: ibm3270;
-	font-size: 22px;
-	margin: 0;
+  background-image: url(/img/221.gif);
+  color: white;
+  text-align: center;
+  font-family: ibm3270;
+  font-size: 22px;
+  margin: 0;
 }
 
 a {
-	cursor: pointer;
-	text-decoration: none;
-	color: #D2738A;
+  cursor: pointer;
+  color: #D2738A;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #222;
-    width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #111;
+  border-bottom: 1px solid #D2738A;
+  width: 100%;
 }
   
 li {
-    float: left;
+  float: left;
 }
   
 li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 8px 16px;
-    text-decoration: none;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 8px 16px;
+  text-decoration: none;
 }
 
 li a:hover {
-	background-color: #111;
+  background-color: #222;
 }
 
 .active {
-	background-color: #D2738A;
+  background-color: #D2738A;
 }
 
 .active:hover {
-	background-color: #D2738A;
+  background-color: #D2738A;
+}
+
+.hidden {
+  display: none !important;
 }

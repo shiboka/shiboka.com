@@ -1,0 +1,41 @@
+<% content_for :head do %>
+  <link rel="stylesheet" type="text/css" href="/home/style.css"/>
+<% end %>
+
+<div id="content">
+  <div id="inner-content">
+    <h2 class="header">Welcome</h2>
+    <hr style="width: 50%;"/>
+
+    <img id="home-img" onClick="toggleAudio()" src="/img/home.gif" height="200px" title="Play Track 44"/>
+    <audio id="player" src="/sound/track_44.mp3"></audio>
+    <br/>
+    <progress id="seekbar" class="hidden" value="0" max="1" style="width:400px;"></progress>
+
+    <p>This site is just for fun, and I suppose in many ways it's a love letter to flash. You will find a collection of flash videos at <a href="/flash">/flash</a> and a fun little image renderer at <a href="/rrr">/rrr</a>.</p>
+    <p>The image renderer was inspired by a flash called "pleaseunderstand.swf", so all credit for the idea goes to the creator, Anonymous D. If you want to see the original, you can find it <a href="/flash#pleaseunderstand.swf">here</a>.</p>
+    <p>You can view my 404 page <a href="/404">here</a>, it features swfchan's old "404.swf".</p>
+    <p style="font-size: 16px; color: #666;">Now time for the self-promotion section of the page.</p>
+    <hr/>
+
+    <h2 class="header">Projects</h2>
+    <p>Here is a collection of my personal projects, all hosted on <a href="https://github.com/shiboka">my github</a>.</p>
+    <hr style="width: 50%;"/>
+
+    <span class="sub-header">Z80 Assembler</span>
+    <p>This is an assembler for the Z80 microprocessor, it's mostly finished but the code could be cleaner and I'm missing a few instructions. It will take a Z80 .asm file and assemble it into a binary, after that you would use another tool to convert it into an image for whatever Z80-based system you want to emulate it on. I convert it to a ZX Spectrum image and run it with Fuse.</p>
+    <a href="https://github.com/shiboka/z80asm">source</a>
+    <hr style="width: 50%;"/>
+
+    <span class="sub-header">mankaiBBS</span>
+    <p>mankaiBBS is a WIP textboard made with Ruby on Rails and Next.js. It's a bit overengineered, but the way it's designed should be very scalable and secure. The Rails portion is a simple REST API for managing Boards, Threads, and Posts, with support for Users and Roles for making Admins/Moderators/whatever you want. I chose Next.js for the frontend because it allows me to do server side rendering, which results in better performance and SEO, it also allows me to restrict API calls and JWT storage to the server side (http-only cookies). This way of handling authentication and API interaction results in a more secure system, as it prevents access to the API and authentication information from the client side.</p>
+    <a href="https://github.com/shiboka/mankaiBBS">source</a>
+    <hr style="width: 50%;"/>
+
+    <span class="sub-header">This Website</span>
+    <p>Made in Ruby with Sinatra, and a lot of Javascript. If you want to view the source for this site here it is.</p>
+    <a href="https://github.com/shiboka/shiboka.com">source</a>
+  </div>
+</div>
+
+<script src="/home/index.js"></script>

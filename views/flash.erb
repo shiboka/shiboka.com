@@ -1,0 +1,33 @@
+<% content_for :head do %>
+  <link rel="stylesheet" type="text/css" href="/flash/style.css"/>
+<% end %>
+
+<div id="warn-msg">
+  <h1>Warning</h1>
+  <h3>This page contains flashing images and loud audio</h3>
+  <a onClick="showPage()">Click here to enter</a>
+</div>
+
+<div id="load-msg" class="hidden">
+  <h1>Loading Ruffle</h1>
+  <img src="/img/PUPPYWHIRL.gif" width="125px" height="100px"/>
+</div>
+
+<div id="content" class="hidden">
+  <h3 id="title"></h3>
+  <div id="container">
+    <div id="loader"></div>
+  </div>
+  <br/>
+
+  <% files.each do |file| %>
+    <a class="flash" href="#<%= file %>"><%= file %></a> 
+    <a href="/flash/<%= file %>">
+      <img src="/img/dl.png" width="16px" height="16px"/>
+    </a>
+    <br/>
+  <% end %>
+</div>
+
+<script src="/flash/index.js"></script>
+<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
