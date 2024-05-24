@@ -1,10 +1,18 @@
-#home-img {
+#player-container {
+  display: inline-block;
+  width: 50%;
+  background-color: black;
   cursor: pointer;
+}
+
+#player-img {
+  height: 200px;
 }
 
 #seekbar {
   background-color: black;
   height: 5px;
+  width: 100%;
   margin-top: 10px;
   border: 1px solid #D2738A
 }

@@ -2,6 +2,7 @@
 const width = 600;
 let height;
 let img;
+let img_ref;
 let img_ref_ctx;
 let cnv_ctx;
 
@@ -71,7 +72,7 @@ window.addEventListener('hashchange', () => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-  const img_ref = document.getElementById('img_ref');
+  img_ref = document.getElementById('img-ref');
   img_ref_ctx = img_ref.getContext('2d');
 
   const cnv = document.getElementById('cnv');
