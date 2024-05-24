@@ -18,6 +18,8 @@ a {
 }
 
 ul {
+  position: fixed;
+  top: 0;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -61,4 +63,12 @@ li a:hover {
 
 .hidden {
   display: none !important;
+}
+
+#title {
+  margin-top: 4%;
+}
+
+#content {
+  margin-bottom: 8%;
 }
