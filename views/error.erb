@@ -1,16 +1,19 @@
 <% content_for :head do %>
   <link rel="stylesheet" type="text/css" href="/error/style.css"/>
-  <link rel="stylesheet" type="text/css" href="/error/serror.css"/>
 <% end %>
 
 <h1 id="title"><%= status %></h1>
 <div id="content">
   <div id="inner-content">
-    <span>Server Error<br/>Have a dancing Akarin</span>
+    <% if location == "client" %>
+      <span>Client Error<br/>Have a dancing Rumia</span>
+    <% else %>
+      <span>Server Error<br/>Have a dancing Akarin</span>
+    <% end %>
     <hr/>
     <div id="player-container" onClick="toggleAudio()" title="DANCE!!!">
-      <img id="player-img" src="/img/akarin.gif"/>
-      <audio id="player" src="/sound/boom.mp3"></audio>
+      <img id="player-img" src="/img/<%= location == "client" ? "rumia" : "akarin" %>.gif"/>
+      <audio id="player" src="/sound/<%= location == "client" ? "ravers_fantasy" : "boom" %>.mp3"></audio>
       <br/>
       <progress id="seekbar" value="0" max="1"></progress>
     </div>

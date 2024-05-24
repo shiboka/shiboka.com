@@ -1,3 +1,19 @@
+#title {
+  display: block;
+}
+
+#content {
+  display: inline-block;
+  border: 2px solid #D2738A;
+  background-color: #111;
+}
+
+#inner-content {
+  border: 1px solid #666;
+  margin: 20px;
+  padding: 30px;
+}
+
 #flash-content {
   display: inline-block;
   margin-bottom: 50px;
@@ -8,6 +24,11 @@
   display: inline-block;
   background-color: black;
   cursor: pointer;
+  width: 300px;
+}
+
+#player-img {
+  height: 300px;
 }
 
 #seekbar {

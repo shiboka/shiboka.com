@@ -62,11 +62,11 @@ get "/serror/" do
 end
 
 error 400..499 do
-  erb :cerror, locals: { status: }
+  erb :error, locals: { status:, location: "client" }
 end
 
 error 500..599 do
-  erb :serror, locals: { status: }
+  erb :error, locals: { status:, location: "server" }
 end
 
 error 404 do
