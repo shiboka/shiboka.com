@@ -1,0 +1,11 @@
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+#hues {
+  width: 70%;
+  height: 750px;
+}

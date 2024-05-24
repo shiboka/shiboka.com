@@ -44,7 +44,7 @@
 }
 
 #seekbar::-webkit-progress-bar {
-  background-color: #666;
+  background-color: black;
 }
 
 #seekbar::-webkit-progress-value {

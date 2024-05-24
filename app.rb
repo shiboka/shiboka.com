@@ -29,6 +29,10 @@ get "/rrr" do
   erb :rrr, locals: { rrr_button: "active", files: }
 end
 
+get "/0x40" do
+  erb :hues, locals: { hues_button: "active" }
+end
+
 get "/404" do
   halt 404
 end
@@ -47,6 +51,10 @@ end
 
 get "/rrr/" do
   redirect "/rrr"
+end
+
+get "/0x40/" do
+  redirect "/0x40"
 end
 
 get "/404/" do

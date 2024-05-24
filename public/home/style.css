@@ -22,7 +22,7 @@
 }
 
 #seekbar::-webkit-progress-bar {
-  background-color: #666;
+  background-color: black;
 }
 
 #seekbar::-webkit-progress-value {
@@ -31,7 +31,7 @@
 }
 
 #content {
-  margin: 8% 25% 8% 25%;
+  margin: 100px 25% 100px 25%;
   border: 2px solid #D2738A;
   color: white;
   background-color: #111;
@@ -56,4 +56,10 @@ p {
   font-weight: bold;
   text-decoration-line: underline;
   color: #666;
+}
+
+@media screen and (max-width: 900px) {
+  #content {
+    margin: 140px 4% 100px 4%;
+  }
 }

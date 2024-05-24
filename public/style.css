@@ -66,9 +66,23 @@ li a:hover {
 }
 
 #title {
-  margin-top: 4%;
+  margin-top: 70px;
 }
 
 #content {
-  margin-bottom: 8%;
+  margin-bottom: 100px;
+}
+
+@media screen and (max-width: 900px) {
+  ul {
+    font-size: 50px;
+  }
+
+  #github-logo {
+    height: 50px;
+  }
+
+  #title {
+    margin-top: 100px;
+  }
 }
