@@ -4,11 +4,14 @@
 
 #content {
   display: inline-block;
-  padding: 30px;
-  margin-bottom: 50px;
   border: 2px solid #D2738A;
-  color: #D2738A;
   background-color: #111;
+}
+
+#inner-content {
+  border: 1px solid #666;
+  margin: 20px;
+  padding: 30px;
 }
 
 #flash-content {
