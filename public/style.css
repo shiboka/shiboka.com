@@ -43,6 +43,14 @@ li a:hover {
   background-color: #222;
 }
 
+#github-logo-container {
+  float: right;
+}
+
+#github-logo {
+  height: 24px;
+}
+
 .active {
   background-color: #D2738A;
 }

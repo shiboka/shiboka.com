@@ -1,21 +1,32 @@
-#title {
-  display: block;
-}
-
-#content {
-  display: inline-block;
-  border: 2px solid #D2738A;
-  background-color: #111;
-}
-
-#inner-content {
-  border: 1px solid #666;
-  margin: 20px;
-  padding: 30px;
-}
-
 #flash-content {
   display: inline-block;
   margin-bottom: 50px;
   border: 2px solid #D2738A;
+}
+
+#player-container {
+  display: inline-block;
+  background-color: black;
+  cursor: pointer;
+}
+
+#seekbar {
+  background-color: black;
+  height: 5px;
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid #D2738A
+}
+
+#seekbar::-moz-progress-bar {
+  background-color: #D2738A;
+}
+
+#seekbar::-webkit-progress-bar {
+  background-color: #666;
+}
+
+#seekbar::-webkit-progress-value {
+  background-color: #D2738A;
+
 }

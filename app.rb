@@ -33,6 +33,14 @@ get "/404" do
   halt 404
 end
 
+get "/cerror" do
+  halt 400
+end
+
+get "/serror" do
+  halt 500
+end
+
 get "/flash/" do
   redirect "/flash"
 end
@@ -45,14 +53,22 @@ get "/404/" do
   redirect "/404"
 end
 
+get "/cerror/" do
+  redirect "/cerror"
+end
+
+get "/serror/" do
+  redirect "/serror"
+end
+
 error 400..499 do
-  erb :error, locals: { status: }
+  erb :cerror, locals: { status: }
+end
+
+error 500..599 do
+  erb :serror, locals: { status: }
 end
 
 error 404 do
   erb :e404, locals: { status: }
-end
-
-error 500..599 do
-  "#{status} Server Error"
 end
