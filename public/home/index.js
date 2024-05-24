@@ -2,9 +2,7 @@ let playing = false;
 
 function toggleAudio() {
   let player = document.getElementById('player');
-  let seekbar = document.getElementById('seekbar');
 
-  seekbar.classList.remove('hidden');
   playing ? player.pause() : player.play();
   playing = !playing;
 }
