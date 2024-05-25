@@ -11,7 +11,6 @@ class Flash
     return nil if @data.nil?
 
     n_bits = u_bits(5)
-    puts n_bits
 
     s_bits(n_bits)
     w = s_bits(n_bits) / 20
@@ -75,10 +74,8 @@ class Flash
   def u_bits(bit_count)
     value = 0
 
-    bit_count -= 1
-    while bit_count >= 0
-      value = value << 1 | bit
-      bit_count -= 1
+    bit_count.times do
+      value = (value << 1) | bit
     end
 
     value
@@ -86,12 +83,9 @@ class Flash
 
   def s_bits(bit_count)
     value = bit.zero? ? 0 : -1
-    bit_count -= 1
 
-    bit_count -= 1
-    while bit_count >= 0
-      value = value << 1 | bit
-      bit_count -= 1
+    (bit_count - 1).times do
+      value = (value << 1) | bit
     end
 
     value
