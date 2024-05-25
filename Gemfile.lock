@@ -8,10 +8,13 @@ GEM
     multi_json (1.15.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
+    nio4r (2.7.3)
     parallel (1.24.0)
     parser (3.3.1.0)
       ast (~> 2.4.1)
       racc
+    puma (6.4.2)
+      nio4r (~> 2.0)
     racc (1.8.0)
     rack (3.0.11)
     rack-protection (4.0.0)
@@ -19,6 +22,9 @@ GEM
       rack (>= 3.0.0, < 4)
     rack-session (2.0.0)
       rack (>= 3.0.0)
+    rackup (2.1.0)
+      rack (>= 3)
+      webrick (~> 1.8)
     rainbow (3.1.1)
     regexp_parser (2.9.2)
     rexml (3.2.8)
@@ -53,6 +59,7 @@ GEM
     strscan (3.1.0)
     tilt (2.3.0)
     unicode-display_width (2.5.0)
+    webrick (1.8.1)
     zlib (3.1.0)
 
 PLATFORMS
@@ -60,6 +67,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  puma
+  rack
+  rackup
   rubocop
   sinatra
   sinatra-contrib

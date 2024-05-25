@@ -1,0 +1,9 @@
+chdir: "/root/shiboka.com"
+rackup: "/root/shiboka.com/config.ru"
+log: "/root/shiboka.com/log/thin.log"
+environment: production
+address: 0.0.0.0
+port: 80
+servers: 1
+threaded: false
+daemonize: true
