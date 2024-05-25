@@ -36,8 +36,7 @@ class Flash
     if header == "FWS"
       return data[8..].unpack("c*")
     elsif header == "CWS"
-      uncompressed = Zlib::Inflate.inflate(data[8..])
-      return uncompressed.unpack("c*")
+      return Zlib::Inflate.inflate(data[8..]).unpack("c*")
     end
 
     nil
