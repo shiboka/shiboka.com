@@ -27,19 +27,52 @@ class Flash
 
   private
 
+#  def read(file)
+#    return nil unless File.file?(file)
+#
+#    data = File.read(file)
+#    header = data[0..2]
+#
+#    if header == "FWS"
+#      return data[8..].unpack("c*")
+#    elsif header == "CWS"
+#      return Zlib::Inflate.inflate(data[8..]).unpack("c*")
+#    end
+#
+#    nil
+#  end
+
   def read(file)
     return nil unless File.file?(file)
 
-    data = File.read(file)
-    header = data[0..2]
+    File.open(file, "rb") do |f|
+      header = f.read(3)
+      f.seek(8)  # Skip to the 9th byte after the header
 
-    if header == "FWS"
-      return data[8..].unpack("c*")
-    elsif header == "CWS"
-      return Zlib::Inflate.inflate(data[8..]).unpack("c*")
+      if header == "FWS"
+        return read_first_chunk(f)
+      elsif header == "CWS"
+        return read_and_decompress_first_chunk(f)
+      end
     end
 
     nil
+  end
+
+  def read_first_chunk(io)
+    chunk = io.read(4096)
+    chunk.unpack("c*") if chunk
+  end
+
+  def read_and_decompress_first_chunk(io)
+    inflater = Zlib::Inflate.new
+    begin
+      compressed_chunk = io.read(4096)
+      decompressed_chunk = inflater.inflate(compressed_chunk)
+      decompressed_chunk.unpack("c*")
+    ensure
+      inflater.close
+    end
   end
 
   def bit
