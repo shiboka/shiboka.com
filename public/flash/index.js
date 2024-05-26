@@ -81,6 +81,7 @@ function setFlash(flash) {
       ruffleReady = true;
       document.getElementById('content').classList.remove('hidden');
       document.getElementById('load-msg').classList.add('hidden');
+      document.getElementById('msg-content').classList.add('hidden');
       loadFlash(f);
     });
   });

@@ -1,15 +1,24 @@
+#msg-content {
+  height: 80%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+
 #warn-msg {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 15%;
+  flex-direction: column;
 }
 
 #load-msg {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 15%;
+  flex-direction: column;
 }
 
 #container {
