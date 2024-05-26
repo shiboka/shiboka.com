@@ -8,14 +8,14 @@
   <canvas id="cnv"></canvas>
   <br/>
   <br/>
-</div>
 
-<% files.each do |file| %>
-  <a class="img" href="#<%= file %>"><%= file %></a>
-  <a href="/rrr/<%= file %>">
-    <img src="/img/dl.png" width="16px" height="16px"/>
-  </a>
-  <br/>
-<% end %>
+  <% files.each do |file| %>
+    <a class="img" href="#<%= file %>"><%= file %></a>
+    <a href="/rrr/<%= file %>">
+      <img src="/img/dl.png" width="16px" height="16px"/>
+    </a>
+    <br/>
+  <% end %>
+</div>
 
 <script type="text/javascript" src="/rrr/index.js"></script>

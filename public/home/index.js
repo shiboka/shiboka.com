@@ -1,9 +1,10 @@
-let msg;
 const flash = 'pleaseunderstand.swf';
+let msg;
 
 function showFlash() {
   msg.classList.add('hidden');
   player.classList.remove('hidden');
+  setFlash(flash, { height: 300, loader: false });
   player.load(`/flash/${flash}`);
 }
 
@@ -17,5 +18,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
   container.appendChild(player);
   player.classList.add('hidden');
-  setFlash(flash, { height: 300, loader: false });
 });
