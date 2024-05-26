@@ -57,7 +57,7 @@ p {
   color: #666;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1100px) {
   #content {
     margin: 50px 4% 100px 4%;
   }
