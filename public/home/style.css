@@ -1,3 +1,22 @@
+body {
+  font-size: 22px;
+}
+
+#flash-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+#flash-msg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+}
+
 #player-container {
   display: inline-block;
   width: 50%;
@@ -40,6 +59,10 @@
   border: 1px solid #666;
   margin: 20px;
   padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 p {

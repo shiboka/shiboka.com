@@ -1,18 +1,21 @@
-let playing = false;
+let msg;
+const flash = 'pleaseunderstand.swf';
 
-function toggleAudio() {
-  let player = document.getElementById('player');
-
-  playing ? player.pause() : player.play();
-  playing = !playing;
+function showFlash() {
+  msg.classList.add('hidden');
+  player.classList.remove('hidden');
+  player.load(`/flash/${flash}.swf`);
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  let player = document.getElementById('player');
-  let seekbar = document.getElementById('seekbar');
-  player.loop = true;
+  window.RufflePlayer = window.RufflePlayer || {};
 
-  player.addEventListener('timeupdate', () => {
-    seekbar.setAttribute("value", player.currentTime / player.duration);
-  });
+  ruffle = window.RufflePlayer.newest();
+  player = ruffle.createPlayer();
+  container = document.getElementById('flash-container');
+  msg = document.getElementById('flash-msg');
+
+  container.appendChild(player);
+  player.classList.add('hidden');
+  setFlash(flash, { height: 300, loader: false });
 });
