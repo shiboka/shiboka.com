@@ -4,7 +4,7 @@ const flash = 'pleaseunderstand.swf';
 function showFlash() {
   msg.classList.add('hidden');
   player.classList.remove('hidden');
-  player.load(`/flash/${flash}.swf`);
+  player.load(`/flash/${flash}`);
 }
 
 window.addEventListener('DOMContentLoaded', () => {
