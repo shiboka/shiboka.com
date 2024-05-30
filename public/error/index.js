@@ -1,10 +1,17 @@
+let player;
+let playing = false;
+
+function toggleAudio() {
+  playing ? player.pause() : player.play()
+  playing = !playing
+}
+
 window.addEventListener('DOMContentLoaded', () => {
-  window.RufflePlayer = window.RufflePlayer || {};
+  player = document.getElementById('player');
+  let seekbar = document.getElementById('seekbar');
+  player.loop = true;
 
-  let ruffle = window.RufflePlayer.newest();
-  let player = ruffle.createPlayer();
-  let container = document.getElementById('container');
-
-  container.appendChild(player);
-  player.load('/error/404.swf');
+  player.addEventListener('timeupdate', () => {
+    seekbar.setAttribute("value", player.currentTime / player.duration);
+  });
 });
