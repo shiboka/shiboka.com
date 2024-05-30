@@ -2,62 +2,6 @@ body {
   font-size: 22px;
 }
 
-#flash-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #c85571;
-  color: #efccd4;
-  border: 2px solid #e5aebc;
-  cursor: pointer;
-}
-
-#flash-msg {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 26px;
-  margin: 10px;
-}
-
-#flash-container:active {
-  background-color: #c44665;
-  color: #e5aebc;
-  border: 2px solid #dc91a3;
-}
-
-#player-container {
-  display: inline-block;
-  width: 50%;
-  background-color: black;
-  cursor: pointer;
-}
-
-#player-img {
-  height: 200px;
-}
-
-#seekbar {
-  background-color: black;
-  height: 5px;
-  width: 100%;
-  border: 1px solid #D2738A
-}
-
-#seekbar::-moz-progress-bar {
-  background-color: #D2738A;
-}
-
-#seekbar::-webkit-progress-bar {
-  background-color: black;
-}
-
-#seekbar::-webkit-progress-value {
-  background-color: #D2738A;
-
-}
-
 #content {
   margin: 100px 25% 100px 25%;
   border: 2px solid #D2738A;
