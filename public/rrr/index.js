@@ -1,5 +1,6 @@
 // variables for the image and canvas
-const width = 600;
+const maxWidth = 600;
+let width;
 let height;
 let img;
 let img_ref;
@@ -47,11 +48,22 @@ function loadImg(file) {
 
   img.addEventListener('load', () => {
     // set up the canvas and draw the image
-    height = ~~(img.height / (img.width / width));
-    img_ref.width = width;
-    img_ref.height = height;
-    cnv.width = width;
-    cnv.height = height;
+    maxHeight = ~~(img.height / (img.width / maxWidth));
+
+    const setResponsiveVideo = () => {
+      const aspectRatio = maxHeight / maxWidth;
+      const windowWidth = window.innerWidth;
+      width = windowWidth > maxWidth ? maxWidth : windowWidth - 60;
+      height = width * aspectRatio;
+
+      img_ref.width = width;
+      img_ref.height = height;
+      cnv.width = width;
+      cnv.height = height;
+    };
+
+    setResponsiveVideo();
+
     img_ref_ctx.drawImage(img, 0, 0, width, height);
 
     // reset values for the render loop

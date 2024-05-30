@@ -73,10 +73,19 @@ function setFlash(flash, options = defaultOptions) {
       height = maxHeight;
     }
 
-    container.style.height = `${height}px`;
-    container.style.width = `${width}px`;
-    player.setAttribute('width', width);
-    player.setAttribute('height', height);
+    const setResponsiveVideo = () => {
+      const aspectRatio = height / width;
+      const windowWidth = window.innerWidth;
+      const newWidth = windowWidth > width ? width : windowWidth - 60;
+      const newHeight = newWidth * aspectRatio;
+
+      container.style.width = `${newWidth}px`;
+      container.style.height = `${newHeight}px`;
+      player.setAttribute('width', newWidth);
+      player.setAttribute('height', newHeight);
+    };
+
+    setResponsiveVideo();
 
     if (options.loader) {
       if (ruffleReady) {
