@@ -10,7 +10,7 @@ let cnv_ctx;
 // variables for the render loop
 const delay = 10;
 let max_size = 80;
-const min_size = 4;
+let min_size = 4;
 const amp = 20;
 let interval;
 let step;
@@ -59,6 +59,7 @@ function loadImg(file) {
       } else {
         width = windowWidth - 60;
         max_size = 60;
+        min_size = 2;
       }
 
       height = width * aspectRatio;
