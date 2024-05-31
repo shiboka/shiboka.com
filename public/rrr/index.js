@@ -9,7 +9,7 @@ let cnv_ctx;
 
 // variables for the render loop
 const delay = 10;
-const max_size = 80;
+let max_size = 80;
 const min_size = 4;
 const amp = 20;
 let interval;
@@ -53,7 +53,14 @@ function loadImg(file) {
     const setResponsiveVideo = () => {
       const aspectRatio = maxHeight / maxWidth;
       const windowWidth = window.innerWidth;
-      width = windowWidth > maxWidth ? maxWidth : windowWidth - 60;
+ 
+      if (windowWidth > maxWidth) {
+        width = maxWidth;
+      } else {
+        width = windowWidth - 60;
+        max_size = 60;
+      }
+
       height = width * aspectRatio;
 
       img_ref.width = width;
