@@ -8,11 +8,12 @@
 #hues {
   width: 70%;
   height: 700px;
+  border: 2px solid #D2738A;
 }
 
 @media screen and (max-width: 1100px) {
   #hues {
     width: 95%;
-    height: 500px;
+    height: 400px;
   }
 }
