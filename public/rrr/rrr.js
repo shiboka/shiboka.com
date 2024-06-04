@@ -67,7 +67,7 @@ class ImageRenderer {
       this.img.addEventListener('load', () => {
         // set up the canvas and draw the image
         const aspectRatio = this.img.height / this.img.width;
-        const maxWidth = Math.floor(aspectRatio * MAX_HEIGHT);
+        const maxWidth = Math.floor(MAX_HEIGHT / aspectRatio);
         const windowWidth = window.innerWidth;
       
         if (windowWidth > maxWidth) {
