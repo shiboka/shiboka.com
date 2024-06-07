@@ -7,6 +7,7 @@ gem "rackup"
 gem "sinatra"
 gem "sinatra-contrib"
 gem "zlib"
+gem "google-cloud-storage"
 
 group :development do
   gem "memory_profiler"

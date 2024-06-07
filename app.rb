@@ -1,6 +1,7 @@
 require "sinatra"
 require "sinatra/content_for"
 require_relative "models/flash"
+require_relative "utils/google_cloud"
 
 get "/" do
   erb :home, locals: { home_button: "active" }
@@ -10,23 +11,22 @@ get "/flash" do
   file = params[:f]
 
   unless file
-    files = Dir.children("public/flash")
-    files.select! { |i| i[/\.swf$/] }
+    files = list_files_in_bucket("shiboka-com", "flash")
     return erb :flash, locals: { flash_button: "active", files: }
   end
 
-  flash = Flash.new("public/flash/#{file}")
+  file = fetch_file_from_bucket("shiboka-com", "flash/#{file}")
+  flash = Flash.new(file)
   dims = flash.dimensions
 
   return "error\n200\n200" unless dims
 
-  "#{file}\n#{dims[:w]}\n#{dims[:h]}"
+  "#{file.name.gsub("flash/", "")}\n#{dims[:w]}\n#{dims[:h]}"
 end
 
 
 get "/rrr" do
-  files = Dir.children("public/rrr")
-  files.select! { |i| i[/\.(png|jpg)$/] }
+  files = list_files_in_bucket("shiboka-com", "rrr")
   erb :rrr, locals: { rrr_button: "active", files: }
 end
 

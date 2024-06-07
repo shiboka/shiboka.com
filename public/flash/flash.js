@@ -1,4 +1,6 @@
-const FLASH_DIRECTORY = '/flash';
+const CDN_BUCKET = 'shiboka-com';
+const CDN_URL = `https://storage.googleapis.com/download/storage/v1/b/${CDN_BUCKET}/o`;
+const FLASH_DIRECTORY = 'flash';
 const MAX_HEIGHT = 700;
 const WINDOW_PADDING = 60;
 
@@ -87,6 +89,8 @@ class FlashLoader {
   
   calculateDimensions(w, h) {
     try {
+      if (h < MAX_HEIGHT) return { width: w, height: h };
+
       const aspectRatio = w / h;
       const maxWidth = MAX_HEIGHT * aspectRatio;
       const windowWidth = window.innerWidth;
@@ -133,7 +137,8 @@ class FlashLoader {
     try {
       if (flash == 'error') return;
     
-      const res = await fetch(`${FLASH_DIRECTORY}/${flash}`);
+      const encodedFlash = encodeURIComponent(`${FLASH_DIRECTORY}/${flash}`);
+      const res = await fetch(`${CDN_URL}/${encodedFlash}?alt=media`);
       let loadedBytes = 0;
       const totalBytes = res.headers.get('Content-Length');
       const reader = res.body.getReader();

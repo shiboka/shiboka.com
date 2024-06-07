@@ -1,4 +1,6 @@
-const IMAGE_DIRECTORY = '/rrr';
+const CDN_BUCKET = 'shiboka-com';
+const CDN_URL = `https://storage.googleapis.com/download/storage/v1/b/${CDN_BUCKET}/o`;
+const IMAGE_DIRECTORY = 'rrr';
 const MAX_HEIGHT = 700;
 const WINDOW_PADDING = 60;
 const MAX_STEP = 200;
@@ -58,7 +60,9 @@ class ImageRenderer {
   loadImg(file) {
     try {
       this.img = new Image();
-      this.img.src = `${IMAGE_DIRECTORY}/${file}`;
+      this.img.crossOrigin = 'anonymous';
+      const encodedFile = encodeURIComponent(`${IMAGE_DIRECTORY}/${file}`);
+      this.img.src = `${CDN_URL}/${encodedFile}?alt=media`;
 
       this.img.addEventListener('error', (e) => {
         console.error(`Error loading image: ${e}`);

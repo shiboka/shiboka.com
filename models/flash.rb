@@ -26,18 +26,32 @@ class Flash
 
   private
 
+#  def read(file)
+#    return nil unless File.file?(file)
+#
+#    File.open(file, "rb") do |f|
+#      header = f.read(3)
+#      f.seek(8)
+#
+#      if header == "FWS"
+#        return read_first_chunk(f)
+#      elsif header == "CWS"
+#        return read_and_decompress_first_chunk(f)
+#      end
+#    end
+#
+#    nil
+#  end
+
   def read(file)
-    return nil unless File.file?(file)
+    file_data = file.download
+    header = file_data.read(3)
+    file_data.seek(8)
 
-    File.open(file, "rb") do |f|
-      header = f.read(3)
-      f.seek(8)
-
-      if header == "FWS"
-        return read_first_chunk(f)
-      elsif header == "CWS"
-        return read_and_decompress_first_chunk(f)
-      end
+    if header == "FWS"
+      return read_first_chunk(file_data)
+    elsif header == "CWS"
+      return read_and_decompress_first_chunk(file_data)
     end
 
     nil

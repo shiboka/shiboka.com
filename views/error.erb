@@ -1,7 +1,7 @@
 <% content_for :head do %>
   <link rel="stylesheet" type="text/css" href="/error/style.css"/>
 <% end %>
-
+<div id="location" class="hidden"><%= location %></div>
 <h1 id="title"><%= status %></h1>
 <div id="content">
   <div id="inner-content">
@@ -9,7 +9,7 @@
     <hr style="width: 70%;"/>
     <div id="player-container" onClick="toggleAudio()" title="DANCE!!!">
       <img id="player-img" src="/img/<%= location == "client" ? "rumia" : "akarin" %>.gif"/>
-      <audio id="player" src="/audio/<%= location == "client" ? "cotten_eye_joe" : "boom" %>.mp3"></audio>
+      <audio id="player"></audio>
       <br/>
       <progress id="seekbar" value="0" max="1"></progress>
     </div>
