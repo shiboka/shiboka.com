@@ -34,6 +34,7 @@ jobs:
         host: ${{ secrets.DROPLET_IP }}
         username: root
         key: ${{ secrets.DROPLET_SSH_KEY }}
+        passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
         script: |
           docker pull registry.digitalocean.com/shiboka/shiboka.com:latest
           docker stop shiboka.com || true
