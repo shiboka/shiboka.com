@@ -1,0 +1,40 @@
+name: Deploy to DigitalOcean
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on push or pull request to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build -t shiboka.com .
+
+    - name: Install doctl
+      uses: digitalocean/action-doctl@v2
+      with:
+        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+    - name: Login to DigitalOcean Container Registry
+      run: doctl registry login
+
+    - name: Push Docker image to DigitalOcean Container Registry
+      run: docker tag shiboka.com:latest registry.digitalocean.com/shiboka/shiboka.com:latest && docker push registry.digitalocean.com/shiboka/shiboka.com:latest
+
+    - name: SSH and deploy to DigitalOcean
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DROPLET_IP }}
+        username: root
+        key: ${{ secrets.DROPLET_SSH_KEY }}
+        script: |
+          docker pull registry.digitalocean.com/shiboka/shiboka.com:latest
+          docker stop shiboka.com || true
+          docker rm shiboka.com || true
+          docker run -d -p 80:80 --name shiboka.com registry.digitalocean.com/shiboka/shiboka.com:latest
