@@ -36,6 +36,7 @@ jobs:
         key: ${{ secrets.DROPLET_SSH_KEY }}
         passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
         script: |
+          echo "${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}" | docker login -u shiboka --password-stdin registry.digitalocean.com
           docker pull registry.digitalocean.com/shiboka/shiboka.com:latest
           docker stop shiboka.com || true
           docker rm shiboka.com || true
