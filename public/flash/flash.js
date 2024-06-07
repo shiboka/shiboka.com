@@ -89,14 +89,18 @@ class FlashLoader {
   
   calculateDimensions(w, h) {
     try {
-      if (h < MAX_HEIGHT) return { width: w, height: h };
-
       const aspectRatio = w / h;
       const maxWidth = MAX_HEIGHT * aspectRatio;
       const windowWidth = window.innerWidth;
-      const width = windowWidth > maxWidth ? maxWidth : windowWidth - WINDOW_PADDING;
-      const height = width / aspectRatio;
-      return { width, height };
+
+      if (windowWidth < maxWidth) {
+        const width = windowWidth - WINDOW_PADDING;
+        return  { width, height: width / aspectRatio };
+      } else if (h < MAX_HEIGHT) {
+        return { width: w, height: h };
+      }
+      
+      return { width: maxWidth, height: MAX_HEIGHT };
     } catch (e) {
       console.error(`Failed to calculate dimensions: ${e}`);
       return { width: 200, height: 200 };
