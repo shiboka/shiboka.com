@@ -1,8 +1,8 @@
 require "zlib"
 
 class Flash
-  def initialize(file)
-    @data = read(file)
+  def initialize(io)
+    @data = read(io)
     @byte_idx = 0
     @bit_idx = 0
   end
@@ -26,32 +26,14 @@ class Flash
 
   private
 
-#  def read(file)
-#    return nil unless File.file?(file)
-#
-#    File.open(file, "rb") do |f|
-#      header = f.read(3)
-#      f.seek(8)
-#
-#      if header == "FWS"
-#        return read_first_chunk(f)
-#      elsif header == "CWS"
-#        return read_and_decompress_first_chunk(f)
-#      end
-#    end
-#
-#    nil
-#  end
-
-  def read(file)
-    file_data = file.download
-    header = file_data.read(3)
-    file_data.seek(8)
+  def read(io)
+    header = io.read(3)
+    io.seek(8)
 
     if header == "FWS"
-      return read_first_chunk(file_data)
+      return read_first_chunk(io)
     elsif header == "CWS"
-      return read_and_decompress_first_chunk(file_data)
+      return read_and_decompress_first_chunk(io)
     end
 
     nil

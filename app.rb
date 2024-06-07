@@ -15,13 +15,13 @@ get "/flash" do
     return erb :flash, locals: { flash_button: "active", files: }
   end
 
-  file = fetch_file_from_bucket("shiboka-com", "flash/#{file}")
-  flash = Flash.new(file)
+  file_io = fetch_file_from_bucket("shiboka-com", "flash/#{file}")
+  flash = Flash.new(file_io)
   dims = flash.dimensions
 
   return "error\n200\n200" unless dims
 
-  "#{file.name.gsub("flash/", "")}\n#{dims[:w]}\n#{dims[:h]}"
+  "#{file}\n#{dims[:w]}\n#{dims[:h]}"
 end
 
 
