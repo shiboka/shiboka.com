@@ -1,7 +1,7 @@
 const CDN_BUCKET = 'shiboka-com';
 const CDN_URL = `https://storage.googleapis.com/download/storage/v1/b/${CDN_BUCKET}/o`;
 const FLASH_DIRECTORY = 'flash';
-const MAX_HEIGHT = 700;
+const MAX_HEIGHT = 500;
 const WINDOW_PADDING = 60;
 
 class FlashLoader {
