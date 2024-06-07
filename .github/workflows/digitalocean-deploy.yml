@@ -17,16 +17,11 @@ jobs:
     - name: Build Docker image
       run: docker build -t shiboka.com .
 
-    - name: Install doctl
-      uses: digitalocean/action-doctl@v2
-      with:
-        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    - name: Login to GitHub Container Registry
+      run: echo "${{ secrets.GH_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-    - name: Login to DigitalOcean Container Registry
-      run: doctl registry login
-
-    - name: Push Docker image to DigitalOcean Container Registry
-      run: docker tag shiboka.com:latest registry.digitalocean.com/shiboka/shiboka.com:latest && docker push registry.digitalocean.com/shiboka/shiboka.com:latest
+    - name: Push Docker image to GitHub Container Registry
+      run: docker tag shiboka.com:latest ghcr.io/${{ github.repository_owner }}/shiboka.com:latest && docker push ghcr.io/${{ github.repository_owner }}/shiboka.com:latest
 
     - name: SSH and deploy to DigitalOcean
       uses: appleboy/ssh-action@master
@@ -36,8 +31,8 @@ jobs:
         key: ${{ secrets.DROPLET_SSH_KEY }}
         passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
         script: |
-          echo "${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}" | docker login -u shiboka --password-stdin registry.digitalocean.com
-          docker pull registry.digitalocean.com/shiboka/shiboka.com:latest
+          echo "${{ secrets.GH_TOKEN }}" | docker login -u ${{ github.actor }} --password-stdin ghcr.io
+          docker pull ghcr.io/${{ github.repository_owner }}/shiboka.com:latest
           docker stop shiboka.com || true
           docker rm shiboka.com || true
-          docker run -d -p 80:80 --name shiboka.com registry.digitalocean.com/shiboka/shiboka.com:latest
+          docker run -d -p 80:80 --name shiboka.com ghcr.io/${{ github.repository_owner }}/shiboka.com:latest
