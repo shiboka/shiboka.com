@@ -15,7 +15,7 @@ get "/flash" do
     return erb :flash, locals: { flash_button: "active", files: }
   end
 
-  file_io = fetch_file_from_bucket("shiboka-com", "flash/#{file}")
+  file_io = fetch_file_from_bucket("shiboka-com", "flash", file)
   flash = Flash.new(file_io)
   dims = flash.dimensions
 
