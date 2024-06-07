@@ -40,14 +40,14 @@ class Flash
   end
 
   def read_first_chunk(io)
-    chunk = io.read(4096)
+    chunk = io.read(1024)
     chunk&.unpack("c*")
   end
 
   def read_and_decompress_first_chunk(io)
     inflater = Zlib::Inflate.new
     begin
-      compressed_chunk = io.read(4096)
+      compressed_chunk = io.read(1024)
       decompressed_chunk = inflater.inflate(compressed_chunk)
       decompressed_chunk.unpack("c*")
     ensure

@@ -24,6 +24,12 @@ end
 def fetch_file_from_bucket(bucket_name, path, file_name)
   encoded_file_name = ERB::Util.url_encode(file_name)
   uri = URI("https://storage.googleapis.com/#{bucket_name}/#{path}/#{encoded_file_name}")
-  response = Net::HTTP.get(uri)
-  StringIO.new(response)
+
+  Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == "https") do |http|
+    request = Net::HTTP::Get.new uri
+    request["Range"] = "bytes=0-1034"
+
+    response = http.request request
+    StringIO.new(response.body)
+  end
 end
