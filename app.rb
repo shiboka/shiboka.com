@@ -81,5 +81,3 @@ end
 error 404 do
   erb :e404, locals: { status: }
 end
-
-#test
