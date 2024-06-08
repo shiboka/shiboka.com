@@ -44,7 +44,7 @@ class ImageRenderer {
         try {
           pxl = this.imgRefCtx.getImageData(x, y, 1, 1).data;
         } catch (e) {
-          console.error(`Error getting image data: ${e}`);
+          console.error(`Error getting image data: ${e.message}`);
         }
 
         this.cnvCtx.fillStyle = `rgb(${pxl[0]}, ${pxl[1]}, ${pxl[2]})`;
@@ -53,7 +53,7 @@ class ImageRenderer {
       
       this.renderStep++;
     } catch (e) {
-      console.error(`Error rendering pixels: ${e}`);
+      console.error(`Error rendering pixels: ${e.message}`);
     }
   }
   
@@ -115,3 +115,5 @@ class ImageRenderer {
     this.loadImg(image.textContent);
   }
 }
+
+module.exports = ImageRenderer;

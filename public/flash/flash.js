@@ -11,68 +11,41 @@ class FlashLoader {
     this.container = null;
     this.loader = null;
     this.ruffleReady = false;
-    this.defaultOptions = {
-      loader: true,
-    };
     this.settings = {
       warnOnUnsupportedContent: false
     };
   }
   
   // Add type checking
-  async setFlash(flash, options = this.defaultOptions) {
-    try {
-      if (!this.validateParameters(flash, options)) return;
-    
-      const data = await this.fetchAndSplitData(flash);
-      if (!data) return;
-    
-      const [f, w, h] = data;
-      this.updateTitle(f, options);
-    
-      const { width, height } = this.calculateDimensions(w, h);
-      this.setDimensions(width, height);
-    
-      if (options.loader) this.setElementsAndLoadFlash(f);
-    } catch (e) {
-      console.error(`Failed to set flash: ${e}`);
-    }
+  async setFlash(flash) {
+    if (!this.validateParameters(flash)) return;
+  
+    const data = await this.fetchAndSplitData(flash);
+    if (!data) return;
+  
+    const [f, w, h] = data;
+    this.updateTitle(f);
+  
+    const { width, height } = this.calculateDimensions(w, h);
+    this.setDimensions(width, height);
+  
+    this.setElementsAndLoadFlash(f);
   }
   
-  validateParameters(flash, options) {
-    if (typeof flash !== 'string' || typeof options !== 'object') {
+  validateParameters(flash) {
+    if (typeof flash !== 'string') {
       console.error('Invalid parameters for setFlash');
       return false;
     }
     return true;
   }
 
-  updateTitle(flash, options) {
-    try {
-      const titleElement = document.getElementById('title');
-      if (options.loader) titleElement.textContent = flash;
-    } catch (e) {
-      console.error(`Failed to update title: ${e}`);
-    }
-  }
-  
-  setElementsAndLoadFlash(flash) {
-    try {
-      const contentElement = document.getElementById('content');
-      const loadMsgElement = document.getElementById('load-msg');
-      const msgContentElement = document.getElementById('msg-content');
-      this.loadFlashWithRuffle(flash, contentElement, loadMsgElement, msgContentElement);
-    } catch (e) {
-      console.error(`Failed to load flash: ${e}`);
-    }
-  }
-  
   async fetchAndSplitData(flash) {
     try {
       const data = await this.fetchFlash(flash);
       return data.split('\n');
     } catch (e) {
-      console.error(`Failed to parse flash data: ${e}`);
+      console.error(`Failed to parse flash data: ${e.message}`);
       return ['error', 200, 200];
     }
   }
@@ -82,13 +55,26 @@ class FlashLoader {
       const res = await fetch(`${FLASH_DIRECTORY}?f=${flash}`);
       return await res.text();
     } catch (e) {
-      console.error(`Failed to fetch flash data: ${e}`);
-      return null;
+      console.error(`Failed to fetch flash data: ${e.message}`);
+      throw e;
     }
   }
-  
+
+  updateTitle(flash) {
+    try {
+      const titleElement = document.getElementById('title');
+      titleElement.textContent = flash;
+    } catch (e) {
+      console.error(`Failed to update title: ${e.message}`);
+    }
+  }
+
   calculateDimensions(w, h) {
     try {
+      if (w == null || h == null) {
+        throw new Error('Invalid dimensions');
+      }
+
       const aspectRatio = w / h;
       const maxWidth = MAX_HEIGHT * aspectRatio;
       const windowWidth = window.innerWidth;
@@ -102,7 +88,7 @@ class FlashLoader {
       
       return { width: maxWidth, height: MAX_HEIGHT };
     } catch (e) {
-      console.error(`Failed to calculate dimensions: ${e}`);
+      console.error(`Failed to calculate dimensions: ${e.message}`);
       return { width: 200, height: 200 };
     }
   }
@@ -114,7 +100,19 @@ class FlashLoader {
       this.player.setAttribute('width', width);
       this.player.setAttribute('height', height);
     } catch (e) {
-      console.error(`Failed to set dimensions: ${e}`);
+      console.error(`Failed to set dimensions: ${e.message}`);
+    }
+  }
+  
+  setElementsAndLoadFlash(flash) {
+    try {
+      const contentElement = document.getElementById('content');
+      const loadMsgElement = document.getElementById('load-msg');
+      const msgContentElement = document.getElementById('msg-content');
+      this.loadFlashWithRuffle(flash, contentElement, loadMsgElement, msgContentElement);
+    } catch (e) {
+      console.error(`Failed to load flash: ${e.message}`);
+      throw e;
     }
   }
   
@@ -133,7 +131,7 @@ class FlashLoader {
         this.loadFlash(f);
       });
     } catch (e) {
-      console.error(`Failed to load flash into Ruffle: ${e}`);
+      console.error(`Failed to load flash into Ruffle: ${e.message}`);
     }
   }
   
@@ -169,7 +167,9 @@ class FlashLoader {
       this.player.classList.remove('hidden');
       this.loader.classList.add('hidden');
     } catch (e) {
-      console.error(`Failed to load flash: ${e}`);
+      console.error(`Failed to load flash: ${e.message}`);
     }
   }
 }
+
+module.exports = FlashLoader;
