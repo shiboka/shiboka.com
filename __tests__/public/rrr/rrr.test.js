@@ -119,6 +119,6 @@ describe('renderPixels', () => {
     });
 
     renderer.renderPixels();
-    expect(console.error).toHaveBeenCalledWith('Error rendering pixels: Failed to render pixels');
+    expect(console.error).toHaveBeenCalledWith('Error rendering pixels: Failed to render pixels test');
   });
 });
