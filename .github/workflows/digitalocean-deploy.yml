@@ -1,7 +1,6 @@
 name: Deploy to DigitalOcean
 
 on:
-  workflow_dispatch:
   push:
     branches:
       - master
