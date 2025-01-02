@@ -1,4 +1,4 @@
-name: Deploy to DigitalOcean
+name: Publish to GHCR
 
 on:
   push:
