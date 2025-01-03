@@ -24,7 +24,6 @@ get "/flash" do
   "#{file}\n#{dims[:w]}\n#{dims[:h]}"
 end
 
-
 get "/rrr" do
   files = list_files_in_bucket("shiboka-com", "rrr")
   erb :rrr, locals: { rrr_button: "active", files: }
@@ -32,6 +31,11 @@ end
 
 get "/0x40" do
   erb :hues, locals: { hues_button: "active" }
+end
+
+get "/sig" do
+  sigs = ["banan.jpg", "shades.gif", "sip.png", "garf.png"]
+  redirect "/img/#{sigs[rand(4)]}"
 end
 
 get "/404" do
@@ -56,6 +60,10 @@ end
 
 get "/0x40/" do
   redirect "/0x40"
+end
+
+get "/sig/" do
+  redirect "/sig"
 end
 
 get "/404/" do
