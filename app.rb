@@ -34,8 +34,8 @@ get "/0x40" do
 end
 
 get "/sig" do
-  sigs = ["banan.jpg", "shades.gif", "sip.png", "garf.png"]
-  redirect "/img/#{sigs[rand(4)]}"
+  sigs = ["banan.jpg", "birb.jpg", "garf.png", "shades.gif", "sip.png"]
+  redirect "/img/#{sigs[rand(5)]}"
 end
 
 get "/404" do
