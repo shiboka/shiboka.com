@@ -1,0 +1,28 @@
+.home-content-wrapper {
+  display: flex;
+  place-items: center;
+  background-color: darkblue;
+  width: 500px;
+  height: 500px;
+}
+
+.home-content {
+  display: flex;
+  place-items: center;
+}
+
+.home-content-header {
+  display: flex;
+  place-items: center;
+}
+
+.home-content-list {
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+}
+
+.home-content-list-item {
+  display: flex;
+  place-items: center;
+}
